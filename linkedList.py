@@ -83,7 +83,6 @@ class LinkedList:
         self.length     -= 1
         #If before pop the node into the LL the lenght is 0, set head and tail to None
         if self.length == 0:
-            print("h")
             self.head = None
             self.tail = None
         #Return the pop element
@@ -99,4 +98,36 @@ class LinkedList:
             print(current_node.value)
             #Move to the next node
             current_node = current_node.next
+    
+    def prepend(self, value) -> bool:
+        """
+        Append to the the begging of the ll a new node
+        """
+        new_node = Node(value=value)
+        if self.length  == 0:
+            self.head   =   new_node
+            self.tail   =   new_node
+            self.length =  1
+        else:
+            #Refers the new node to the LL
+            new_node.next   = self.head
+            #Set the head to the new node
+            self.head       = new_node
+            self.length     +=  1
+        return True
+    
+    def pop_firs(self):
+        """
+        Delete from the ll the first element and return it
+        """
+        if self.length == 0:
+            return None
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            self.length -= 1
+            if self.length == 0:
+                self.tail = None
+            return temp.value
 
