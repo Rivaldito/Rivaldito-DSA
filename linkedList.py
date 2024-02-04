@@ -116,9 +116,13 @@ class LinkedList:
             self.length     +=  1
         return True
     
-    def pop_firs(self):
+    def pop_firs(self) -> any:
         """
         Delete from the ll the first element and return it
+
+        Return
+            None:   If the lenght of the ll is 0
+            Any:    The value of the node
         """
         if self.length == 0:
             return None
@@ -130,4 +134,59 @@ class LinkedList:
             if self.length == 0:
                 self.tail = None
             return temp.value
+        
+    def get(self, index) -> any:
+        """
+        Return the node according to the index pass to the function 
+        
+        Return:
+            None:   If the index its out of range or is less than 0
+            Any:    The value of the node  
+        """
+        if index < 0 or index > self.length:
+            return None
+        else:
+            temp = self.head
+            # The underscore is use to
+            for _ in range(index):
+                temp = temp.next
+            return temp
+    
+    def set_value(self, index, value) -> bool:
+        """
+        Change the value of a node according to the index pass to the function.
 
+        Return
+            True:   If the change was succesful
+            False:  If the index it's out of range or less than 0
+        """
+        temp = self.get(index=index)
+
+        if temp:
+            temp.value = value
+            return True
+        return False   
+
+    def insert(self, index, value) -> bool:
+        """
+        Insert a new node in the ll according to the index pass to the function
+
+        Return
+            True:   If the insert was successful
+            False:  If the index it's out of range or is less than zero
+        """
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            self.prepend(value=value)
+            return True
+        elif index == self.length:
+            self.append(value=value)
+            return True
+        else:
+            new_node        = Node(value=value)
+            temp            = self.get(index= index - 1)
+            new_node.next   = temp.next
+            temp.next       = new_node
+            self.length     += 1
+            return True 

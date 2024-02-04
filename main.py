@@ -8,11 +8,14 @@ if __name__ == "__main__":
     ll.append("Hi")
     ll.append("Its me")
     ll.append("last node")
-    #Test Print method
-    print("################")
-    ll.print()
-    #Test the pop method
-    print("################")
-    print(ll.pop().value)
-    print("################")
+    # #Test Print method
+    # print("################")
+    # ll.print()
+    # #Test the pop method
+    # print("################")
+    # print(ll.pop().value)
+    # print("################")
+    # ll.print()
+
+    ll.insert(2,"test")
     ll.print()
