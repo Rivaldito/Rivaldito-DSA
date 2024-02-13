@@ -101,7 +101,7 @@ class LinkedList:
     
     def prepend(self, value) -> bool:
         """
-        Append to the the begging of the ll a new node
+        Append to the the beginning of the ll a new node
         """
         new_node = Node(value=value)
         if self.length  == 0:

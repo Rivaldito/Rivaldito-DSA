@@ -17,5 +17,5 @@ if __name__ == "__main__":
     # print("################")
     # ll.print()
 
-    ll.insert(2,"test")
+    ll.insert(0,"test")
     ll.print()
