@@ -39,6 +39,10 @@ class LinkedList:
         self.tail   = new_node
         self.length = 1
 
+    ################################################
+    #   Basic operations of Linked-List's
+    ################################################
+        
     def append(self, value) -> bool:
         """
         The append method add a new node to the LL
@@ -190,3 +194,25 @@ class LinkedList:
             temp.next       = new_node
             self.length     += 1
             return True 
+    
+    ################################################
+    #   Common problems of Linked-List's
+    ################################################
+
+    def reverse(self) -> None:
+        """
+        Invert the order of the linked list
+
+        Return
+            None
+        """
+        temp        = self.head
+        self.head   = self.tail
+        self.tail   = temp
+        after       = temp.next
+        before      = None
+        for _ in range(self.length):
+            after       = temp.next
+            temp.next   = before
+            before      = temp
+            temp        = after
