@@ -267,3 +267,50 @@ class LinkedList:
                 return True
             
         return False
+
+    def find_kth_from_end(self, k) -> any:
+
+        slow = fast = self.head
+
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        
+        return slow
+
+    def reverse_between(self, start_index, end_index) -> any:
+
+        if self.head == None or self.length = 1:
+            return None
+
+        start_node = end_node = before = previous_end_node = self.head
+
+        for k in range(end_index):
+            if (k-1) < start_index:
+                before = before.next
+            if k < start_index:
+                start_node = start_node.next 
+            if k < end_index:
+                end_node = end_node.next
+            if (k+1) < end_index:
+                next_end_node = next_end_node.next
+
+        temp            = start_node
+        after           = temp.next
+        start_node      = end_node
+        start_node.next = next_end_node
+        end_node        = temp
+
+        for _ in range(end_index - start_index):
+            after       = temp.next
+            temp.next   = before
+            before      = temp
+            temp        = after
+        
+
+
