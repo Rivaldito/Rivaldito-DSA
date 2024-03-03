@@ -285,7 +285,7 @@ class LinkedList:
 
     def reverse_between(self, start_index, end_index) -> any:
 
-        if self.head == None or self.length = 1:
+        if self.head == None or self.length == 1:
             return None
 
         start_node = end_node = before = previous_end_node = self.head
