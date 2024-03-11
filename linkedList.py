@@ -269,7 +269,12 @@ class LinkedList:
         return False
 
     def find_kth_from_end(self, k) -> any:
+        """
+        This method return the Kth node from the end of the linked list 
 
+        Return
+            Node
+        """  
         slow = fast = self.head
 
         for _ in range(k):
@@ -282,35 +287,51 @@ class LinkedList:
             fast = fast.next
         
         return slow
+    
+    def remove_duplicates(self):
+        """
+        This method detect if the linked list contain a loop 
 
-    def reverse_between(self, start_index, end_index) -> any:
+        Return
+            Bool
+        """  
+        values = set()
+        previus = None
+        current = self.head
 
-        if self.head == None or self.length == 1:
-            return None
+        while current:
+            if current.value in values:
+                previus.next = current.next
+                self.length -= 1
+            else:
+                values.add(current.value)
+                previus = current
+            current = current.next
 
-        start_node = end_node = before = previous_end_node = self.head
+    def reverse_between(self, start_index, end_index):
+        """
+        This method reverse elements between a start and end index 
 
-        for k in range(end_index):
-            if (k-1) < start_index:
-                before = before.next
-            if k < start_index:
-                start_node = start_node.next 
-            if k < end_index:
-                end_node = end_node.next
-            if (k+1) < end_index:
-                next_end_node = next_end_node.next
+        Return
+            None
+        """  
 
-        temp            = start_node
-        after           = temp.next
-        start_node      = end_node
-        start_node.next = next_end_node
-        end_node        = temp
+        if self.length <= 1:
+            return
+        
+        help_node       = Node(0)
+        help_node.next  = self.head
+        previous_node   = help_node
+
+        for _ in range(start_index):
+            previous_node.next
+
+        current_node = previous_node.next
 
         for _ in range(end_index - start_index):
-            after       = temp.next
-            temp.next   = before
-            before      = temp
-            temp        = after
-        
+            node_to_move        = current_node.next
+            current_node.next   = node_to_move.next
+            node_to_move.next   = previous_node.next
+            previous_node.next  = node_to_move        
 
-
+        self.head = help_node.next
