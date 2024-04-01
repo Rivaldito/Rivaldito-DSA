@@ -1,21 +1,13 @@
 from linkedList import LinkedList
+from doubleLinkedList import DoublyLinkedList
 
 if __name__ == "__main__":
     
-    #Test the constructor
-    ll = LinkedList("Hey")
-    #Test the append method
-    ll.append("Hi")
-    ll.append("Its me")
-    ll.append("last node")
-    # #Test Print method
-    # print("################")
-    # ll.print()
-    # #Test the pop method
-    # print("################")
-    # print(ll.pop().value)
-    # print("################")
-    # ll.print()
-
-    ll.insert(0,"test")
-    ll.print()
+    dll = DoublyLinkedList("🔥")
+    dll.append("⛱️")
+    dll.append("🌊")
+    dll.print_list()
+    dll.pop()
+    dll.print_list()
+    dll.prepend("🏝️")
+    dll.print_list()
