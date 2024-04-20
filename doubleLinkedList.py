@@ -77,3 +77,24 @@ class DoublyLinkedList:
             self.head = new_node
         self.length += 1
         return True
+    
+    def pop_first(self) -> any:
+        """
+        Removes the first node of the doubly linked list
+
+        Return:
+            None: if the double linked list is empty
+            Node: if the double linked list is not empty            
+        """
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+        else:
+            temp = self.head
+            temp.next = self.head
+            temp.next = None
+        self.length -= 1
+        return temp
